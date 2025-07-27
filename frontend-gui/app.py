@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect, session
 import requests
-
+import os
 app = Flask(__name__)
 app.secret_key = 'supersecret'
 
-AUTH_URL = "http://localhost:5000"
-TASK_URL = "http://localhost:5001"
+AUTH_URL = os.environ.get("AUTH_URL", "http://localhost:5000")
+TASK_URL = os.environ.get("TASK_URL", "http://localhost:5001")
+
 
 @app.route('/')
 def home():
