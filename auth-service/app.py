@@ -8,7 +8,14 @@ import os
 app = Flask(__name__)
 
 # Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@localhost:5432/authdb'
+db_user = os.environ.get('DB_USER', 'postgres')
+db_pass = os.environ.get('DB_PASS', 'admin')
+db_host = os.environ.get('DB_HOST', 'postgres')  # service name
+db_port = os.environ.get('DB_PORT', '5432')
+db_name = os.environ.get('DB_NAME', 'authdb')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{db_user}:{db_pass}@{db_host}:{db_port}/{db_name}'
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'mysecret'  # For JWT encoding/decoding
 
