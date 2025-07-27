@@ -4,8 +4,9 @@ import os
 app = Flask(__name__)
 app.secret_key = 'supersecret'
 
-AUTH_URL = "http://smart-task-manager-git-auth-services:5000"
-TASK_URL = "http://smart-task-manager-git-task-services:5001"
+AUTH_URL = "http://smart-task-manager-git-auth-services-00001"
+TASK_URL = "http://smart-task-manager-git-task-services-00001"
+
 
 
 
